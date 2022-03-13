@@ -10,6 +10,10 @@
                 width: 200px
     .consultation
         padding-left: 30px
+    .catalog
+        padding-top: 40px
+        &__content
+            justify-content: space-around
 @media ( max-width: 767px )
     .header
         &__logo
@@ -43,7 +47,15 @@
     .title
         &_left
             font-size: 30px
-            line-height: 42px                
+            line-height: 42px  
+    .carousel
+        display: none
+    .catalog
+        &__tabs
+            margin-top: 30px
+            flex-direction: column
+        &__tab
+            margin-bottom: 10px
 @media ( max-width: 575px )
     .header
         &__official
