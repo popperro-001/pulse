@@ -130,4 +130,7 @@ $(document).ready(function() {
     validateForms('#consultation form');
     validateForms('#order form');
 
+    //This plugin doesn't respond to type attribute number (type="number"), thus remove it from input in HTML
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
+
 });
