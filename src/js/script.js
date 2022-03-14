@@ -67,6 +67,67 @@ $(document).ready(function() {
             $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
             $('.overlay, #order').fadeIn('slow');
         });
-    })
+    });
+
+    //Form validation
+
+    // $('#consultation-form').validate();
+    // $('#consultation form').validate({
+    //     rules: {
+    //         name: {
+    //             required: true,
+    //             minlength: 2
+    //         },
+    //         phone: "required",
+    //         email: {
+    //             required: true,
+    //             email: true
+    //         }
+    //     },
+    //     messages: {
+    //         name: {
+    //             required: "Пожалуйста, введите своё имя",
+    //             minlength: jQuery.validator.format("Необходимо минимум {0} символа!")
+    //         },
+    //         phone: "Пожалуйста, введите свой номер телефона",
+    //         email: {
+    //             required: "Пожалуйста, введите свою почту",
+    //             email: "Неправильно введен адрес почты"
+    //         }
+    //     }
+    // });
+    // $('#order form').validate();
+
+    //Optimized version of validation form
+    function validateForms(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите своё имя",
+                    minlength: jQuery.validator.format("Необходимо минимум {0} символа!")
+                },
+                phone: "Пожалуйста, введите свой номер телефона",
+                email: {
+                    required: "Пожалуйста, введите свою почту",
+                    email: "Неправильно введен адрес почты"
+                }
+            }
+        });
+    };
+
+    validateForms('#consultation-form');
+    validateForms('#consultation form');
+    validateForms('#order form');
 
 });
