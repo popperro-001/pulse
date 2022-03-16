@@ -133,4 +133,25 @@ $(document).ready(function() {
     //This plugin doesn't respond to type attribute number (type="number"), thus remove it from input in HTML
     $('input[name=phone]').mask("+7 (999) 999-99-99");
 
+    $('form').submit(function(e) {
+        e.preventDefault(); //switched off standard behavior of the browser
+
+        //Need to check if forms proceed validation, in order not to send blank messages
+        if (!$(this).valid()) {
+            return;
+        }
+
+        $.ajax({
+            type: "POST", //Sends data
+            url: "mailer/smart.php", //Using mailer to proceed the process
+            data: $(this).serialize() //Select  data to send, in that case this means data from form
+        }).done(function() {
+            $(this).find("input").val(""); //After ajax done its job, runs function to empty all input fields
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+            $('form').trigger('reset'); //Resets all forms
+        });
+        return false;
+    });
+
 });
