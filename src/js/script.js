@@ -133,6 +133,7 @@ $(document).ready(function() {
     //This plugin doesn't respond to type attribute number (type="number"), thus remove it from input in HTML
     $('input[name=phone]').mask("+7 (999) 999-99-99");
 
+    //Customizing mailer plugin
     $('form').submit(function(e) {
         e.preventDefault(); //switched off standard behavior of the browser
 
@@ -153,5 +154,21 @@ $(document).ready(function() {
         });
         return false;
     });
+
+    //Setting up pageup link with smooth scroll
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 1600) {
+            $('.pageup').fadeIn();
+        } else {
+            $('.pageup').fadeOut();
+        }
+    });
+
+    $("a[href^='#']").click(function() {
+        const _href = $(this).attr("href");
+        $("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
+        return false;
+    });
+
 
 });
